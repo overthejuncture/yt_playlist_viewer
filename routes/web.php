@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\YoutubeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/youtube')->middleware(['auth', 'google.token'])->group(function () {
+    Route::withoutMiddleware('google.token')->group(function () {
+        Route::get('/createAuthUrl', [YoutubeController::class, 'createAuthUrl']);
+        Route::get('/checkKey', [YoutubeController::class, 'checkKey']);
+    });
+    Route::get('/', [YoutubeController::class, 'index']);
+});
