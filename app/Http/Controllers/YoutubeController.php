@@ -11,10 +11,14 @@ class YoutubeController extends Controller
 {
     public function index(Youtube $service)
     {
+        $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 10])->toSimpleObject()->items;
         return view('youtube.index');
-//        $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 50]);
+    }
 
-//        dd($data);
+    public function exportAllPlaylists(Youtube $service)
+    {
+        $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 10])->toSimpleObject()->items;
+        return view('youtube.export-playlists', ['playlists' => $data]);
     }
 
     public function createAuthUrl(Client $client)

@@ -28,5 +28,6 @@ Route::prefix('/youtube')->middleware(['auth', 'google.token'])->group(function 
         Route::get('/createAuthUrl', [YoutubeController::class, 'createAuthUrl']);
         Route::get('/checkKey', [YoutubeController::class, 'checkKey']);
     });
-    Route::get('/', [YoutubeController::class, 'index']);
+    Route::get('/', [YoutubeController::class, 'index'])->name('youtube');
+    Route::get('/export-playlists', [YoutubeController::class, 'exportAllPlaylists']);
 });
