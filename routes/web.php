@@ -31,3 +31,11 @@ Route::prefix('/youtube')->middleware(['auth', 'google.token'])->group(function 
     Route::get('/', [YoutubeController::class, 'index'])->name('youtube');
     Route::get('/export-playlists', [YoutubeController::class, 'exportAllPlaylists']);
 });
+
+// TODO protecc
+Route::prefix('/api')->group(function () {
+    Route::prefix('/youtube')->middleware('google.token')->group(function () {
+        Route::get('/playlists', [\App\Http\Controllers\Api\YoutubeController::class, 'playlists']);
+        Route::post('/export-playlists', [\App\Http\Controllers\Api\YoutubeController::class, 'exportPlaylists']);
+    });
+});

@@ -40,5 +40,11 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'thumbnail' => 'array,'
     ];
+
+    public function youtube_playlists()
+    {
+        return self::hasMany(YoutubePlaylist::class);
+    }
 }

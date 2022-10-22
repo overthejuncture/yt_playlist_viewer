@@ -14,7 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('youtube_playlists', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->increments('id');
+            $table->string('youtube_id');
+            $table->string('channel_id');
+            $table->string('status');
+            $table->integer('item_count');
+            $table->string('title');
+            $table->string('description', 5000);
+            $table->json('thumbnails');
             $table->foreignId('user_id')->references('id')->on('users');
         });
     }
