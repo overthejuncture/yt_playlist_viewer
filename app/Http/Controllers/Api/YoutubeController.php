@@ -52,7 +52,7 @@ class YoutubeController extends Controller
 
     public function watchLaterGet()
     {
-        return response()->json();
+        return response()->json(Video::all());
     }
 
     public function exportPlaylists(YouTube $youtube)
