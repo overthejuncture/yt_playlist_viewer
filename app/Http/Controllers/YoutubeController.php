@@ -15,6 +15,11 @@ class YoutubeController extends Controller
         return view('youtube.index');
     }
 
+    public function watchLater()
+    {
+        return view('youtube.watch-later');
+    }
+
     public function exportAllPlaylists(Youtube $service)
     {
         $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 10])->toSimpleObject()->items;
