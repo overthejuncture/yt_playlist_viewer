@@ -40,5 +40,8 @@ Route::prefix('/api')->group(function () {
         Route::post('/export-playlists', [\App\Http\Controllers\Api\YoutubeController::class, 'exportPlaylists']);
         Route::get('/watch-later/get', [\App\Http\Controllers\Api\YoutubeController::class, 'watchLaterGet']);
         Route::post('/watch-later/parse-html', [\App\Http\Controllers\Api\YoutubeController::class, 'parseHtml']);
+        Route::get('/categories', [\App\Http\Controllers\Api\YoutubeController::class, 'categories']);
+        Route::post('/categories/create', [\App\Http\Controllers\Api\YoutubeController::class, 'createCategory']);
+        Route::post('/categories/set', [\App\Http\Controllers\Api\YoutubeController::class, 'setCategory']);
     });
 });

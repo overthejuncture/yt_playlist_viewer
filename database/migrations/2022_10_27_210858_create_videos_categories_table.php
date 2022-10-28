@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videos_categories', function (Blueprint $table) {
+        Schema::create('category_video', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('video_id');
+            $table->unsignedBigInteger('category_id');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos_categories');
+        Schema::dropIfExists('category_video');
     }
 };

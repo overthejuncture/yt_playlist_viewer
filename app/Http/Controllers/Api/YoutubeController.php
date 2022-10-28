@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Dto\Youtube\Playlists\Playlist;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Video;
 use Google\Service\YouTube;
 use Illuminate\Http\JsonResponse;
@@ -16,6 +17,30 @@ class YoutubeController extends Controller
     {
 
         return response()->json(['items' => auth()->user()->youtube_playlists()->get()->toArray()]);
+    }
+
+    public function categories()
+    {
+        return response()->json(Category::all());
+    }
+
+    public function createCategory(Request $request)
+    {
+        $title = $request->post('title');
+        $video_id = $request->post('video_id');
+        Category::create([
+            'title' => $title,
+            'video_id' => $video_id,
+            'user_id' => auth()->user()->id,
+        ]);
+    }
+
+    public function setCategory(Request $request)
+    {
+        $video_id = $request->post('video_id');
+        $category_id = $request->post('category_id');
+        $video = Video::where('id', $video_id)->first();
+        $video->categories()->sync($category_id);
     }
 
     public function parseHtml(Request $request)
