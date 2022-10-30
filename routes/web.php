@@ -32,16 +32,3 @@ Route::prefix('/youtube')->middleware(['auth', 'google.token'])->group(function 
     Route::get('/export-playlists', [YoutubeController::class, 'exportAllPlaylists']);
     Route::get('/watch-later', [YoutubeController::class, 'watchLater']);
 });
-
-// TODO protecc
-Route::prefix('/api')->group(function () {
-    Route::prefix('/youtube')->middleware('google.token')->group(function () {
-        Route::get('/playlists', [\App\Http\Controllers\Api\YoutubeController::class, 'playlists']);
-        Route::post('/export-playlists', [\App\Http\Controllers\Api\YoutubeController::class, 'exportPlaylists']);
-        Route::get('/watch-later/get', [\App\Http\Controllers\Api\YoutubeController::class, 'watchLaterGet']);
-        Route::post('/watch-later/parse-html', [\App\Http\Controllers\Api\YoutubeController::class, 'parseHtml']);
-        Route::get('/categories', [\App\Http\Controllers\Api\YoutubeController::class, 'categories']);
-        Route::post('/categories/create', [\App\Http\Controllers\Api\YoutubeController::class, 'createCategory']);
-        Route::post('/categories/set', [\App\Http\Controllers\Api\YoutubeController::class, 'setCategory']);
-    });
-});

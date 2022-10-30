@@ -92,8 +92,9 @@ export default {
         <div v-if="loading">Loading...</div>
         <div v-for="item in items" class="card" style="width: 18rem;">
             <a class="p-3" :href="'https://www.youtube.com/watch?v=' + item.real_id">
-                <div class="h3">{{ item.title }}</div>
-                <a class="my-2 border" :href="'https://www.youtube.com/' + item.author_id">{{ item.author_title }}</a>
+                <img :src="item.thumbnail">
+                <div class="h4">{{ item.title }}</div>
+                <a class="my-2 border" :href="'https://www.youtube.com' + item.author_id">{{ item.author_title }}</a>
             </a>
         </div>
     </div>
