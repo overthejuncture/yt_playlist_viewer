@@ -2,7 +2,7 @@
     <div class="border">
         <CreateCategory/>
         <ListCategories v-on:picked="saveCategoryForItems"/>
-        <SelectionItem :title="title"/>
+        <SelectionItem :title="this.$store.state.watchLater.current.title"/>
     </div>
 </template>
 

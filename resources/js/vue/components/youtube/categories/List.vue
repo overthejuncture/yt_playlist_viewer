@@ -11,10 +11,7 @@
 <script>
 
 export default {
-    name: "List",
-    mounted() {
-        this.$store.dispatch('categories/load');
-    }
+    name: "List"
 }
 </script>
 
