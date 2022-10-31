@@ -17,13 +17,12 @@ class YoutubeController extends Controller
 
     public function watchLater()
     {
-        return view('youtube.watch-later');
+        return view('vue');
     }
 
     public function exportAllPlaylists(Youtube $service)
     {
-        $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 10])->toSimpleObject()->items;
-        return view('youtube.export-playlists', ['playlists' => $data]);
+        return view('vue');
     }
 
     public function createAuthUrl(Client $client)
