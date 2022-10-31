@@ -4,5 +4,5 @@
 @endsection
 
 @push('scripts')
-@vite('resources/js/vue/mpa/youtube/watch-later.js')
+@vite('resources/js/vue/index.js')
 @endpush

@@ -1,16 +1,19 @@
+<template>
+    <router-view></router-view>
+</template>
+
 <script>
+import WatchLater from "./pages/youtube/watch-later.vue";
+
 export default {
     data() {
         return {
             greeting: 'Hello World!'
         }
     },
+    components: {WatchLater}
 }
 </script>
-
-<template>
-    <p class="greeting">{{ greeting }}</p>
-</template>
 
 <style>
 .greeting {
