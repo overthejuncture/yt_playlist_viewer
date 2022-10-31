@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import WatchLater from "./pages/youtube/watch-later.vue";
+import WatchLater from "@/pages/youtube/watch-later.vue";
 
 export default {
     data() {

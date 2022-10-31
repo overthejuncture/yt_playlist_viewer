@@ -1,5 +1,38 @@
+<template>
+    <div class="my-3 btn btn-warning" v-on:click="pickingMode = !pickingMode">Switch mode</div>
+    <div>
+        <input type="text" class="me-3" v-model="newCategoryTitle">
+        <div class="btn btn-success" v-on:click="createCategory">Create a category</div>
+    </div>
+    <div class="mw-100">Categories:</div>
+    <div class="btn btn-warning" v-for="category in categories"
+         v-on:click="setCategory(category.id)">
+        {{ category.title }}
+    </div>
+
+    <div v-if="pickingMode">
+        <SelectionView :title="currentItem.title"/>
+    </div>
+    <div v-else>
+        <input type="file"
+               id="avatar" name="avatar"
+               ref="upload-input"
+               @change="uploadFile">
+
+        <!--        <div class="btn btn-success" v-on:click="handler">Начать экспорт</div>-->
+        <div v-if="loading">Loading...</div>
+        <div v-for="item in items" class="card" style="width: 18rem;">
+            <a class="p-3" :href="'https://www.youtube.com/watch?v=' + item.real_id">
+                <img :src="item.thumbnail">
+                <div class="h4">{{ item.title }}</div>
+                <a class="my-2 border" :href="'https://www.youtube.com' + item.author_id">{{ item.author_title }}</a>
+            </a>
+        </div>
+    </div>
+</template>
+
 <script>
-import Item from "./../../components/youtube/watch-later/Item.vue"
+import SelectionView from "@/components/youtube/watch-later/SelectionView.vue";
 
 export default {
     data() {
@@ -58,44 +91,7 @@ export default {
         });
         this.getCategories()
     },
-    components: {Item}
+    components: {SelectionView}
 }
 </script>
 
-<template>
-    <div class="my-3">
-        <div class="btn btn-warning" v-on:click="pickingMode = !pickingMode">Switch mode</div>
-    </div>
-    <div>
-        <input type="text" class="me-3" v-model="newCategoryTitle">
-        <div class="btn btn-success" v-on:click="createCategory">Create a category</div>
-    </div>
-    <div class="mw-100">Categories:</div>
-    <div class="btn btn-warning" v-for="category in categories"
-        v-on:click="setCategory(category.id)">
-        {{ category.title }}
-    </div>
-    <div v-if="pickingMode">
-        <div class="border p-3">
-            <Item :title="currentItem.title"/>
-        </div>
-    </div>
-
-
-    <div v-else>
-        <input type="file"
-               id="avatar" name="avatar"
-               ref="upload-input"
-               @change="uploadFile">
-
-<!--        <div class="btn btn-success" v-on:click="handler">Начать экспорт</div>-->
-        <div v-if="loading">Loading...</div>
-        <div v-for="item in items" class="card" style="width: 18rem;">
-            <a class="p-3" :href="'https://www.youtube.com/watch?v=' + item.real_id">
-                <img :src="item.thumbnail">
-                <div class="h4">{{ item.title }}</div>
-                <a class="my-2 border" :href="'https://www.youtube.com' + item.author_id">{{ item.author_title }}</a>
-            </a>
-        </div>
-    </div>
-</template>
