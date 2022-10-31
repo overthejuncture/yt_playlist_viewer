@@ -20,7 +20,7 @@ class YoutubeController extends Controller
         return view('vue');
     }
 
-    public function exportAllPlaylists(Youtube $service)
+    public function exportAllPlaylists()
     {
         return view('vue');
     }
