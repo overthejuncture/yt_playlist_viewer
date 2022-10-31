@@ -26,10 +26,8 @@ class YoutubeController extends Controller
     public function createCategory(Request $request)
     {
         $title = $request->post('title');
-        $video_id = $request->post('video_id');
         Category::create([
             'title' => $title,
-            'video_id' => $video_id,
             'user_id' => auth()->user()->id,
         ]);
     }
