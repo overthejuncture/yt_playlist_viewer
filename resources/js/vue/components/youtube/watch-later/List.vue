@@ -3,11 +3,11 @@
         <input type="file"
                id="avatar" name="avatar"
                ref="upload-input"
-               @change="uploadFile">
-
+               @change="uploadFile"
+               class="mb-2">
         <CreateCategory/>
-        <ListCategories/>
-        <div class="row row-cols-sm-2 row-cols-1">
+        <ListCategories class="mb-3"/>
+        <div class="row row-cols-xl-3 row-cols-2">
             <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
         </div>
     </div>

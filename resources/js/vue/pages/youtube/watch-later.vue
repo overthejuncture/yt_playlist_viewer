@@ -1,7 +1,9 @@
 <template>
-    <div class="my-3 btn btn-warning" v-on:click="selectionMode = !selectionMode">Switch mode</div>
-    <SelectionView v-if="selectionMode"/>
-    <List v-else/>
+    <div class="p-2">
+        <div class="my-3 btn btn-warning" v-on:click="selectionMode = !selectionMode">Switch mode</div>
+        <SelectionView v-if="selectionMode"/>
+        <List v-else/>
+    </div>
 </template>
 
 <script>
