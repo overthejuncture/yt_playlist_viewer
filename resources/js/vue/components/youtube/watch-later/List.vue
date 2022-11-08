@@ -7,8 +7,9 @@
 
         <CreateCategory/>
         <ListCategories/>
-
-        <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
+        <div class="row row-cols-sm-2 row-cols-1">
+            <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
+        </div>
     </div>
 </template>
 
@@ -30,10 +31,8 @@ export default {
         },
     },
     components: {CreateCategory, ListCategories, ListItem}
-
 }
 </script>
 
 <style scoped>
-
 </style>

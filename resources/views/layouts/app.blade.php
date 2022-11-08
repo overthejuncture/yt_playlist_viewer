@@ -20,15 +20,13 @@
 <div class="container-fluid">
     @include('layouts.header')
 </div>
-<div id="grid">
-    <div class="container-xxl">
-        <div class="row">
-            <div class="border border-2 col-3" style="height: calc(100vh - 3rem)">
-                @include('layouts.sidebar')
-            </div>
-            <div class="border border-2 col container-fluid">
-                @yield('content')
-            </div>
+<div class="container-md">
+    <div class="d-flex flex-nowrap">
+        <div class="sidebar border border-2 col-3" style="height: calc(100vh - 3rem)">
+            @include('layouts.sidebar')
+        </div>
+        <div class="border border-2 col container-fluid">
+            @yield('content')
         </div>
     </div>
 </div>

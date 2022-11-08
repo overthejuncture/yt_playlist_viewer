@@ -14,13 +14,12 @@ import CreateCategory from "@/components/youtube/categories/Create.vue";
 export default {
     name: "SelectionView",
     components: {SelectionItem, ListCategories, CreateCategory},
-    props: {
-        title: String,
-        id: Number
-    },
     methods: {
-        saveCategoryForItems(id) {
-           console.log('asdasdfsa: ' + id)
+        saveCategoryForItems(categoryId) {
+            this.$store.dispatch('categories/addToVideo', {
+                videoId: this.$store.state.watchLater.current.id,
+                categoryId: categoryId
+            })
         }
     }
 }
