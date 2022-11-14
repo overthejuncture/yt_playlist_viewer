@@ -11,7 +11,6 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/js/vue/index.js',
-                'resources/js/vue/mpa/youtube/*',
             ],
             refresh: true,
         }),

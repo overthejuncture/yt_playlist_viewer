@@ -4,6 +4,11 @@ import routes from '@/routes';
 import {createRouter, createWebHistory} from 'vue-router';
 import { createStore } from 'vuex';
 import store from '@/store.js';
+import axios from 'axios';
+window.axios = axios;
+import '../bootstrap';
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const router = createRouter({
     history: createWebHistory(),

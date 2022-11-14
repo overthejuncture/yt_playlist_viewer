@@ -20,6 +20,9 @@ export default {
                 commit('setAll', res.data);
                 commit('setCurrent', res.data[Math.floor(Math.random() * res.data.length)]);
             });
-        }
+        },
+        nextSelected({dispatch}) {
+            dispatch('getItems')
+        },
     }
 };

@@ -20,4 +20,9 @@ class Category extends Model
             $builder->where('user_id', auth()->user()->id);
         });
     }
+
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class);
+    }
 }

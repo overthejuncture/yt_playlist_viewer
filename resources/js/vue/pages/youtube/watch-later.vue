@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2">
+    <div>
         <div class="my-3 btn btn-warning" v-on:click="selectionMode = !selectionMode">Switch mode</div>
         <SelectionView v-if="selectionMode"/>
         <List v-else/>

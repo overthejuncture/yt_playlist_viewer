@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\WatchLater;
+namespace App\Http\Controllers\Api\Youtube;
 
 use App\Http\Controllers\Controller;
 use App\Models\Video;
@@ -11,7 +11,17 @@ class WatchLaterController extends Controller
 {
     public function get()
     {
-        return response()->json(Video::all());
+        return response()->json(Video::whereDoesntHave('categories')->get());
+    }
+
+    public function setCategory(Request $request)
+    {
+        $video_id = $request->post('videoId');
+        $category_id = $request->post('categoryId');
+        $video = Video::where('id', $video_id)->first();
+        /* @var $video Video */
+        $video->categories()->syncWithoutDetaching($category_id);
+        return response()->json();
     }
 
     public function parseFromHtml(Request $request)

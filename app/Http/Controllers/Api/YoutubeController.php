@@ -32,15 +32,6 @@ class YoutubeController extends Controller
         ]);
     }
 
-    public function setCategory(Request $request)
-    {
-        $video_id = $request->post('video_id');
-        $category_id = $request->post('category_id');
-        $video = Video::where('id', $video_id)->first();
-        $video->categories()->sync($category_id);
-    }
-
-
     public function exportPlaylists(YouTube $youtube)
     {
         $data = $youtube->playlists->listPlaylists(['snippet', 'status', 'contentDetails', 'id'], ['mine' => true]);
