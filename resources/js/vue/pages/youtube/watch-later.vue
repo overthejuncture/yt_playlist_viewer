@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="my-3 btn btn-warning" v-on:click="selectionMode = !selectionMode">Switch mode</div>
+        <div class="mb-3 btn btn-warning" v-if="this.$store.state.watchLater.items.length > 0"
+             v-on:click="selectionMode = !selectionMode">Switch mode
+        </div>
         <SelectionView v-if="selectionMode"/>
         <List v-else/>
     </div>

@@ -14,22 +14,7 @@ class YoutubeController extends Controller
 {
     public function playlists(): JsonResponse
     {
-
         return response()->json(['items' => auth()->user()->youtube_playlists()->get()->toArray()]);
-    }
-
-    public function categories()
-    {
-        return response()->json(Category::all());
-    }
-
-    public function createCategory(Request $request)
-    {
-        $title = $request->post('title');
-        Category::create([
-            'title' => $title,
-            'user_id' => auth()->user()->id,
-        ]);
     }
 
     public function exportPlaylists(YouTube $youtube)

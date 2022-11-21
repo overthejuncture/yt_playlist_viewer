@@ -2,7 +2,7 @@
     <div class="container-md">
         <div class="d-flex flex-nowrap">
             <Sidebar/>
-            <div class="border border-2 col container-fluid">
+            <div class="border border-2 col container-fluid py-3">
                 <router-view></router-view>
             </div>
         </div>
@@ -17,7 +17,10 @@ export default {
         return {
         }
     },
-    components: {Sidebar}
+    components: {Sidebar},
+    created() {
+        this.$store.dispatch('categories/load');
+    }
 }
 </script>
 

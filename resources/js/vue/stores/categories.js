@@ -7,9 +7,10 @@ export default {
     },
     mutations: {
         setAll(state, data) {
-            data.forEach((value) => {
-                state.items[value.id] = value;
-            })
+            state.items = data
+            // data.forEach((value) => {
+            //     state.items[value.id] = value;
+            // })
         },
     },
     actions: {
@@ -19,12 +20,18 @@ export default {
             });
         },
         addToVideo({commit}, data) {
-            axios.post('/api/youtube/categories/set', {
+            axios.post('/api/youtube/videos/set-category', {
                 videoId: data.videoId,
                 categoryId: data.categoryId
             }).then((res) => {
                 commit('setAll', res.data)
             });
+        },
+        delete({dispatch}, data) {
+            axios.delete('/api/youtube/categories/' + data)
+                .then(() => {
+                    dispatch('load');
+                })
         }
     }
 };

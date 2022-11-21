@@ -8,6 +8,7 @@ export default {
     },
     mutations: {
         setAll(state, data) {
+            console.log(data)
             state.items = data;
         },
         setCurrent(state, data) {

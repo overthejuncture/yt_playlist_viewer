@@ -9,18 +9,7 @@ use Google\Service\YouTube;
 
 class YoutubeController extends Controller
 {
-    public function index(Youtube $service)
-    {
-        $data = $service->playlists->listPlaylists('snippet', ['mine' => true, 'maxResults' => 10])->toSimpleObject()->items;
-        return view('youtube.index');
-    }
-
-    public function watchLater()
-    {
-        return view('vue');
-    }
-
-    public function exportAllPlaylists()
+    public function index()
     {
         return view('vue');
     }

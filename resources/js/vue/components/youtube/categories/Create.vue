@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         create() {
-            axios.post('/api/youtube/categories/create', {
+            axios.post('/api/youtube/categories', {
                 title: this.title,
             }).then(() => {
                 this.$store.dispatch('categories/load')

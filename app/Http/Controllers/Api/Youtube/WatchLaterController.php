@@ -13,17 +13,6 @@ class WatchLaterController extends Controller
     {
         return response()->json(Video::whereDoesntHave('categories')->get());
     }
-
-    public function setCategory(Request $request)
-    {
-        $video_id = $request->post('videoId');
-        $category_id = $request->post('categoryId');
-        $video = Video::where('id', $video_id)->first();
-        /* @var $video Video */
-        $video->categories()->syncWithoutDetaching($category_id);
-        return response()->json();
-    }
-
     public function parseFromHtml(Request $request)
     {
         /** @var UploadedFile $file */

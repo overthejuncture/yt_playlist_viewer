@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Youtube\CategoriesController;
+use App\Http\Controllers\Api\Youtube\VideosController;
 use App\Http\Controllers\Api\Youtube\WatchLaterController;
 use App\Http\Controllers\Api\YoutubeController;
 use Illuminate\Support\Facades\Route;
@@ -15,15 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->group(function() {
+Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/youtube')->group(function () {
-        Route::get('/categories', [YoutubeController::class, 'categories']);
-        Route::post('/categories/create', [YoutubeController::class, 'createCategory']);
-        Route::post('/categories/set', [WatchLaterController::class, 'setCategory']);
+        Route::prefix('/videos')->group(function () {
+            Route::get('/get', [VideosController::class, 'get']);
+            Route::post('/set-category', [VideosController::class, 'setCategory']);
+        });
+        Route::prefix('/watch-later')->group(function () {
+            Route::get('/get', [WatchLaterController::class, 'get']);
+            Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);
+        });
+        Route::prefix('/categories')->group(function () {
+            Route::get('', [CategoriesController::class, 'get']);
+            Route::post('', [CategoriesController::class, 'store']);
+            Route::delete('{category}',[CategoriesController::class, 'delete']);
+        });
         Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
         Route::get('/playlists', [YoutubeController::class, 'playlists']);
-        Route::get('/watch-later/get', [WatchLaterController::class, 'get']);
-        Route::post('/watch-later/parse-html', [WatchLaterController::class, 'parseFromHtml']);
     });
 });
 
