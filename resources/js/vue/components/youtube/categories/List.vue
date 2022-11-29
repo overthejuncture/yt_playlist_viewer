@@ -3,7 +3,7 @@
         <div class="mw-100">Categories:</div>
         <div class="btn btn-warning m-1"
              :class="{'border border-4': pickedCat(category.id)}"
-             v-for="category in this.$store.state.categories.items"
+             v-for="category in this.categories"
              v-on:click="this.clicked(category)"
         >
             {{ category.title }}
@@ -20,6 +20,9 @@ export default {
             picked: []
         }
     },
+    props: {
+        categories: Array
+    },
     methods: {
         clicked(category) {
             if (this.pickedCat(category.id)) {
@@ -28,7 +31,7 @@ export default {
                 this.picked.push(category.id)
             }
             this.$emit('picked', category.id);
-            this.$emit('pickedAll', this.picked);
+            this.$emit('allPicked', this.picked);
         },
         pickedCat(id) {
             return this.picked.indexOf(id) !== -1;

@@ -16,8 +16,8 @@ export default {
         },
     },
     actions: {
-        getItems({commit}) {
-            axios.get('/api/youtube/watch-later/get').then(res => {
+        getItems({commit}, filters) {
+            axios.get('/api/youtube/watch-later/get', {params: filters}).then(res => {
                 commit('setAll', res.data);
                 commit('setCurrent', res.data[Math.floor(Math.random() * res.data.length)]);
             });

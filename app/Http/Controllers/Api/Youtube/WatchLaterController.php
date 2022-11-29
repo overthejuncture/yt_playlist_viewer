@@ -3,14 +3,27 @@
 namespace App\Http\Controllers\Api\Youtube;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class WatchLaterController extends Controller
 {
-    public function get()
+    //TODO in the choosing mode it can return videos with categories already,
+    // logic is too different
+    public function get(Request $request)
     {
+        $categories = $request->get('categories');
+        if ($categories) {
+
+//            return response()->json();
+            $videos = Video::whereHas('categories', function ($builder) use ($categories) {
+                $builder->whereIn('category_id', $categories);
+            })->get();
+            return response()->json($videos);
+        }
+
         return response()->json(Video::whereDoesntHave('categories')->get());
     }
     public function parseFromHtml(Request $request)
@@ -31,6 +44,7 @@ class WatchLaterController extends Controller
             '<ytd-channel-name.*?>.*?<a.*?href="(.*?)".*?>(.*?)<\/a>.*?<\/ytd-channel-name>.*?' .
             '<\/ytd-playlist-video-renderer>/s',
             $data, $matches, PREG_SET_ORDER);
+        /** @var User $user */
         $user = auth()->user();
         $all = [];
         foreach ($matches as $match) {

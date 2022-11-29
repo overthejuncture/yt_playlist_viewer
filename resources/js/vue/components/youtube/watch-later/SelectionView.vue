@@ -1,7 +1,7 @@
 <template>
     <div>
         <CreateCategory/>
-        <ListCategories class="mb-2" v-on:picked="saveCategoryForItems"/>
+        <ListCategories :categories="this.$store.state.categories.items" class="mb-2" v-on:picked="saveCategoryForItems"/>
         <div class="h1">
             <a :href="'https://www.youtube.com/watch?v=' + src">
                 <div>

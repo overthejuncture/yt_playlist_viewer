@@ -6,7 +6,9 @@
                @change="uploadFile"
                class="mb-2">
         <CreateCategory/>
-        <ListCategories class="mb-3"/>
+        <ListCategories @allPicked="this.filters.categories = $event" :categories="this.$store.state.categories.items"
+                        class="mb-3"/>
+        <button @click="reload" class="btn btn-success">Reload</button>
         <div class="row row-cols-xl-3 row-cols-2">
             <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
         </div>
@@ -20,6 +22,11 @@ import ListItem from "@/components/youtube/watch-later/ListItem.vue";
 
 export default {
     name: "List",
+    data() {
+        return {
+            filters: {}
+        }
+    },
     methods: {
         uploadFile() {
             const formData = new FormData();
@@ -29,6 +36,9 @@ export default {
                     this.items = res.data.items;
                 });
         },
+        reload() {
+            this.$store.dispatch('watchLater/getItems', this.filters)
+        }
     },
     components: {CreateCategory, ListCategories, ListItem}
 }

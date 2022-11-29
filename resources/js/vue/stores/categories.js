@@ -2,7 +2,7 @@ export default {
     namespaced: true,
     state() {
         return {
-            items: {},
+            items: [],
         }
     },
     mutations: {
@@ -19,12 +19,11 @@ export default {
                 commit('setAll', res.data);
             });
         },
+        // TODO this shouldn't be there
         addToVideo({commit}, data) {
             axios.post('/api/youtube/videos/set-category', {
                 videoId: data.videoId,
                 categoryId: data.categoryId
-            }).then((res) => {
-                commit('setAll', res.data)
             });
         },
         delete({dispatch}, data) {
