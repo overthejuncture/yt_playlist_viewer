@@ -10,7 +10,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'real_id', 'author_id', 'author_title', 'user_id'];
+    protected $fillable = ['title', 'real_id', 'author_id', 'author_title', 'user_id', 'is_watch_later'];
 
     protected static function booted()
     {
@@ -22,5 +22,10 @@ class Video extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopeWatchLater($query)
+    {
+        $query->where('is_watch_later', 1);
     }
 }

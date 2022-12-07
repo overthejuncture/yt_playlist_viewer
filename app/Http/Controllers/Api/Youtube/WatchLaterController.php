@@ -20,11 +20,11 @@ class WatchLaterController extends Controller
 //            return response()->json();
             $videos = Video::whereHas('categories', function ($builder) use ($categories) {
                 $builder->whereIn('category_id', $categories);
-            })->get();
+            })->watchLater()->get();
             return response()->json($videos);
         }
 
-        return response()->json(Video::whereDoesntHave('categories')->get());
+        return response()->json(Video::whereDoesntHave('categories')->watchLater()->get());
     }
     public function parseFromHtml(Request $request)
     {
@@ -58,7 +58,8 @@ class WatchLaterController extends Controller
                     config('youtube.url'), '', explode('&', $match[4])[0]
                 ),
                 'author_title' => trim($match[5]),
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'is_watch_later' => true
             ];
         }
         Video::where('user_id', $user->id)->delete();
