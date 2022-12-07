@@ -1,15 +1,10 @@
 <template>
     <div>
-        <div class="mb-3 btn btn-warning" v-if="this.$store.state.watchLater.items.length > 0"
-             v-on:click="selectionMode = !selectionMode">Switch mode
-        </div>
-        <SelectionView v-if="selectionMode"/>
-        <List v-else/>
+        <List/>
     </div>
 </template>
 
 <script>
-import SelectionView from "@/components/youtube/watch-later/SelectionView.vue";
 import List from "@/components/youtube/watch-later/List.vue";
 
 export default {
@@ -25,7 +20,7 @@ export default {
         this.$store.dispatch('watchLater/getItems');
         this.$store.dispatch('categories/load');
     },
-    components: {SelectionView, List}
+    components: {List}
 }
 </script>
 

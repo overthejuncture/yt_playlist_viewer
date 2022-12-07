@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Youtube\CategoriesController;
+use App\Http\Controllers\Api\Youtube\CategorizeController;
 use App\Http\Controllers\Api\Youtube\VideosController;
 use App\Http\Controllers\Api\Youtube\WatchLaterController;
 use App\Http\Controllers\Api\YoutubeController;
@@ -31,6 +32,9 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('', [CategoriesController::class, 'get']);
             Route::post('', [CategoriesController::class, 'store']);
             Route::delete('{category}',[CategoriesController::class, 'delete']);
+        });
+        Route::prefix('/categorize')->group(function () {
+            Route::get('get',[CategorizeController::class, 'get']);
         });
         Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
         Route::get('/playlists', [YoutubeController::class, 'playlists']);
