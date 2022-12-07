@@ -11,4 +11,9 @@ class CategorizeController
     {
         return response()->json(Video::whereDoesntHave('categories')->first());
     }
+
+    public function getById(Request $request, Video $video)
+    {
+        return response()->json($video);
+    }
 }

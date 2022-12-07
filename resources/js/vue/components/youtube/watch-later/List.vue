@@ -5,12 +5,10 @@
                ref="upload-input"
                @change="uploadFile"
                class="mb-2">
-        <CreateCategory/>
-        <ListCategories @allPicked="this.filters.categories = $event" :categories="this.$store.state.categories.items"
-                        class="mb-3"/>
-        <button @click="reload" class="btn btn-success">Reload</button>
         <div class="row row-cols-xl-3 row-cols-2">
-            <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
+            <router-link v-for="item in this.$store.state.watchLater.items" :to="'/youtube/categorize/' + item.id">
+                <ListItem :item="item"/>
+            </router-link>
         </div>
     </div>
 </template>
@@ -36,9 +34,6 @@ export default {
                     this.items = res.data.items;
                 });
         },
-        reload() {
-            this.$store.dispatch('watchLater/getItems', this.filters)
-        }
     },
     components: {CreateCategory, ListCategories, ListItem}
 }
