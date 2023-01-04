@@ -6,9 +6,7 @@
                @change="uploadFile"
                class="mb-2">
         <div class="row row-cols-xl-3 row-cols-2">
-            <router-link v-for="item in this.$store.state.watchLater.items" :to="'/youtube/categorize/' + item.id">
-                <ListItem :item="item"/>
-            </router-link>
+            <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
         </div>
     </div>
 </template>
