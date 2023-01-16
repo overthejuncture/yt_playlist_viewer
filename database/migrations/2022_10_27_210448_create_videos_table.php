@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('author_id');
             $table->string('author_title');
             $table->string('user_id');
+            $table->text('thumbnail')->nullable();
+            $table->boolean('is_watch_later')->nullable();
         });
     }
 
