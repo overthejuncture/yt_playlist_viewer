@@ -23,6 +23,16 @@ class Category extends Model
         });
     }
 
+    public function subcategories()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function scopeMain($query)
+    {
+        $query->where('parent_id', null);
+    }
+
     public function videos()
     {
         return $this->belongsToMany(Video::class);

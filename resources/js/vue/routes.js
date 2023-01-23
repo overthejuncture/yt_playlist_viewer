@@ -3,6 +3,7 @@ import ExportPlaylists from "@/pages/youtube/export-playlists.vue";
 import Categories from "@/pages/youtube/categories.vue";
 import Categorize from "@/pages/youtube/categorize.vue";
 import CategorizeVideoId from "@/pages/youtube/categorize/video_id.vue";
+import CategoriesCategoryId from "@/pages/youtube/categories/category_id.vue";
 
 export default [
     {path: '/youtube/watch-later', component: WatchLater},
@@ -10,4 +11,5 @@ export default [
     {path: '/youtube/categorize', component: Categorize},
     {path: '/youtube/categorize/:video_id', component: CategorizeVideoId},
     {path: '/youtube/categories', component: Categories},
+    {path: '/youtube/categories/:category_id', component: CategoriesCategoryId},
 ]

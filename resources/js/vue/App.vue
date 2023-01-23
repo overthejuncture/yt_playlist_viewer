@@ -3,7 +3,7 @@
         <div class="d-flex flex-nowrap">
             <Sidebar/>
             <div class="border border-2 col container-fluid py-3">
-                <router-view></router-view>
+                <router-view :key="$route.path"></router-view>
             </div>
         </div>
     </div>

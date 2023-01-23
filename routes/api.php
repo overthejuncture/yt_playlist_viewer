@@ -29,9 +29,11 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);
         });
         Route::prefix('/categories')->group(function () {
-            Route::get('', [CategoriesController::class, 'get']);
+            Route::get('', [CategoriesController::class, 'index']);
             Route::post('', [CategoriesController::class, 'store']);
             Route::delete('{category}',[CategoriesController::class, 'delete']);
+            Route::post('/{category}/addSubcategory', [CategoriesController::class, 'addSubcategory']);
+            Route::get('/{id}',[CategoriesController::class, 'show']);
         });
         Route::prefix('/categorize')->group(function () {
             Route::get('/get',[CategorizeController::class, 'get']);

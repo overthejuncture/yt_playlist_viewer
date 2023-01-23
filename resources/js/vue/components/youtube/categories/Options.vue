@@ -1,23 +1,26 @@
 <template>
-    <div>
-        <Create/>
-        <div v-for="category in this.$store.state.categories.items">
-            <Options :id="category.id" :title="category.title"/>
+    <div class="cat-container">
+        {{ title }}
+        <div class="cat-buttons">
+            <router-link
+                style="text-decoration: none; color: inherit;"
+                :to="'/youtube/categories/' + id" class="cat-button"
+            >
+                <div @click="edit">Edit</div>
+            </router-link>
+            <div @click="this.$store.dispatch('categories/delete', id)" class="cat-button">Delete</div>
         </div>
     </div>
 </template>
 
 <script>
-import Create from "@/components/youtube/categories/Create.vue";
-import Options from "@/components/youtube/categories/Options.vue";
 
 export default {
-    name: "Categories",
-    components: {Create, Options},
+    name: "List",
+    props: ['id', 'title'],
     data() {
         return {}
     },
-    methods: {}
 }
 </script>
 
