@@ -7,7 +7,7 @@ import store from '@/store.js';
 import axios from 'axios';
 window.axios = axios;
 import '../bootstrap';
-import '../../sass/app.scss';
+import '../../css/app.css';
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

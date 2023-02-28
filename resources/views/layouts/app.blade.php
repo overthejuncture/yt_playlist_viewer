@@ -15,12 +15,6 @@
 
 </head>
 <body>
-<div class="container-fluid">
-    @include('layouts.header')
-</div>
 @yield('content')
-<div id="footer">
-    @include('layouts.footer')
-</div>
 @stack('scripts')
 </body>

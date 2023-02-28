@@ -4,13 +4,6 @@ import vue from '@vitejs/plugin-vue'
 const path = require('path')
 
 export default defineConfig({
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: '@import "@/../../sass/_variables.scss";'
-            }
-        }
-    },
     plugins: [
         vue(),
         laravel({

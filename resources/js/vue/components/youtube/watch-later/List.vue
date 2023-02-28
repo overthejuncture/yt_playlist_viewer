@@ -5,7 +5,7 @@
                ref="upload-input"
                @change="uploadFile"
                class="mb-2">
-        <div class="row row-cols-xl-3 row-cols-2">
+        <div class="grid grid-cols-3">
             <ListItem v-for="item in this.$store.state.watchLater.items" :item="item"/>
         </div>
     </div>
