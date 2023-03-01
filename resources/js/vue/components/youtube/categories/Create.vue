@@ -9,7 +9,7 @@
                    id="category" type="text" placeholder="Category title">
         </div>
         <button v-on:click="create"
-                class="ml-5 bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                class="ml-5 bg-secondary hover:bg-highlight text-white font-bold py-2 px-4 rounded">
             Create a category
         </button>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto text-cyan-500 bg-gray-900">
+    <div class="container mx-auto text-highlight bg-primary">
         <Header/>
         <div class="p-5">
             <router-view :key="$route.path"></router-view>

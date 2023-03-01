@@ -1,10 +1,5 @@
 <template>
     <div>
-        <!--        <input type="file"-->
-        <!--               id="avatar" name="avatar"-->
-        <!--               ref="upload-input"-->
-        <!--               @change="uploadFile"-->
-        <!--               class="mb-2">-->
         <label class="block">
             <span class="sr-only">Choose profile photo</span>
             <input type="file" class="block w-full text-sm text-slate-500

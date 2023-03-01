@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="flex gap-5">
         <CategorizeView v-if="video" :video="video">
-            <template v-slot:above>
-                <CreateCategory/>
-                <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
-                                v-on:picked="saveCategoryForItems"/>
-            </template>
         </CategorizeView>
+        <div>
+            <CreateCategory/>
+            <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
+                            v-on:picked="saveCategoryForItems"/>
+        </div>
     </div>
 </template>
 
