@@ -4,7 +4,7 @@
         <div class="cat-buttons">
             <router-link
                 style="text-decoration: none; color: inherit;"
-                :to="'/youtube/categories/' + id" class="cat-button"
+                :to="'/categories/' + id" class="cat-button"
             >
                 <div @click="edit">Edit</div>
             </router-link>

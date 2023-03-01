@@ -1,15 +1,15 @@
-import WatchLater from "@/pages/youtube/watch-later.vue";
-import ExportPlaylists from "@/pages/youtube/export-playlists.vue";
-import Categories from "@/pages/youtube/categories.vue";
-import Categorize from "@/pages/youtube/categorize.vue";
-import CategorizeVideoId from "@/pages/youtube/categorize/video_id.vue";
-import CategoriesCategoryId from "@/pages/youtube/categories/category_id.vue";
+import WatchLater from "@/pages/watch-later.vue";
+import ExportPlaylists from "@/pages/export-playlists.vue";
+import Categories from "@/pages/categories.vue";
+import Categorize from "@/pages/categorize.vue";
+import CategorizeVideoId from "@/pages/categorize/video_id.vue";
+import CategoriesCategoryId from "@/pages/categories/category_id.vue";
 
 export default [
-    {path: '/youtube/watch-later', component: WatchLater},
-    {path: '/youtube/export-playlists', component: ExportPlaylists},
-    {path: '/youtube/categorize', component: Categorize},
-    {path: '/youtube/categorize/:video_id', component: CategorizeVideoId},
-    {path: '/youtube/categories', component: Categories},
-    {path: '/youtube/categories/:category_id', component: CategoriesCategoryId},
+    {path: '/watch-later', component: WatchLater},
+    {path: '/export-playlists', component: ExportPlaylists},
+    {path: '/categorize', component: Categorize},
+    {path: '/categorize/:video_id', component: CategorizeVideoId},
+    {path: '/categories', component: Categories},
+    {path: '/categories/:category_id', component: CategoriesCategoryId},
 ]
