@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Youtube;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class VideosController extends Controller
 {
