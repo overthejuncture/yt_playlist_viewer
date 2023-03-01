@@ -1,7 +1,9 @@
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto text-cyan-500 bg-gray-900">
         <Header/>
-        <router-view :key="$route.path"></router-view>
+        <div class="p-5">
+            <router-view :key="$route.path"></router-view>
+        </div>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-    <div class="h-16 bg-slate-800 text-cyan-500 text-center flex px-20 justify-between items-center">
-        <div>Logo</div>
+    <div class="h-16 bg-gray-700 text-center flex px-20 justify-between items-center">
+        <div>YouTube Watch Later Sorter</div>
         <div class="flex space-x-8">
             <router-link class="btn btn-light nav-link" to="/youtube/export-playlists">Export playlists</router-link>
             <router-link class="btn btn-light nav-link" to="/youtube/watch-later">Watch later</router-link>

@@ -1,12 +1,10 @@
 <template>
-    <div class="col mb-3">
-        <router-link style="text-decoration: none; color: inherit;" :to="'/youtube/categorize/' + item.id">
-            <div class="card">
-                <div class="p-3">
-                    <img style="width: 100%" class="mb-2" :src="item.thumbnail" alt="">
-                    <div class="h4 mb-2">{{ item.title }}</div>
-                    <div>{{ item.author_title }}</div>
-                </div>
+    <div class="border-4 bg-gray-700 border-gray-700 rounded-[0.7rem]">
+        <router-link class="block h-full" style="text-decoration: none; color: inherit;" :to="'/youtube/categorize/' + item.id">
+            <img class="rounded-lg aspect-[16/9] object-cover w-full" :src="item.thumbnail" alt="">
+            <div class="p-5 grid grid-row-2">
+                <div class="mb-5 grow">{{ item.title }}</div>
+                <div class="flex-none">{{ item.author_title }}</div>
             </div>
         </router-link>
     </div>
