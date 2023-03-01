@@ -3,7 +3,7 @@
         <CategorizeView v-if="video" :video="video">
             <template v-slot:above>
                 <CreateCategory/>
-                <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
+                <ListCategories :categories="this.$store.state.categories.items"
                                 v-on:picked="saveCategoryForItems"/>
             </template>
             <template v-slot:below>

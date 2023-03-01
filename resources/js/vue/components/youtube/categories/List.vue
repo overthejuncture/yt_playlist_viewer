@@ -1,12 +1,15 @@
 <template>
-    <div>
-        <div class="mw-100">Categories:</div>
-        <div class="btn btn-warning m-1"
-             :class="{'border border-4': pickedCat(category.id)}"
-             v-for="category in this.categories"
-             v-on:click="this.clicked(category)"
-        >
-            {{ category.title }}
+    <div class="mb-5">
+        <div class="mb-1">Categories:</div>
+        <div class="flex gap-4">
+            <button
+                :class="{'border border-4': pickedCat(category.id)}"
+                v-for="category in this.categories"
+                v-on:click="this.clicked(category)"
+                class="min-w-[100px] bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+                {{ category.title }}
+            </button>
         </div>
     </div>
 </template>

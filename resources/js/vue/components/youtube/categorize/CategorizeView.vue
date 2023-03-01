@@ -1,11 +1,12 @@
 <template>
     <div>
         <slot name="above"></slot>
-        <div v-if="video" class="h1">
+        <div v-if="video" class="max-w-md border-4 bg-gray-700 border-gray-700 rounded-[0.7rem]">
             <a :href="'https://www.youtube.com/watch?v=' + video.real_id">
-                <div>
-                    <img style="width: 100%" class="mb-2 image" :src="video.thumbnail" alt="">
-                    <div>{{ video.title }}</div>
+                <img class="max-w-md rounded-lg aspect-[16/9] object-cover w-full" :src="video.thumbnail" alt="">
+                <div class="p-5 grid grid-row-2">
+                    <div class="mb-5 grow">{{ video.title }}</div>
+                    <div class="flex-none">{{ video.author_title }}</div>
                 </div>
             </a>
         </div>
@@ -23,7 +24,4 @@ export default {
 </script>
 
 <style scoped>
-.image {
-    max-width: 400px;
-}
 </style>
