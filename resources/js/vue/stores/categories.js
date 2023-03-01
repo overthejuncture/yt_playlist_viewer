@@ -15,19 +15,19 @@ export default {
     },
     actions: {
         load({commit}) {
-            axios.get('/api/youtube/categories').then(res => {
+            axios.get('/api/categories').then(res => {
                 commit('setAll', res.data);
             });
         },
         // TODO this shouldn't be there
         addToVideo({commit}, data) {
-            axios.post('/api/youtube/videos/set-category', {
+            axios.post('/api/videos/set-category', {
                 videoId: data.videoId,
                 categoryId: data.categoryId
             });
         },
         delete({dispatch}, data) {
-            axios.delete('/api/youtube/categories/' + data)
+            axios.delete('/api/categories/' + data)
                 .then(() => {
                     dispatch('load');
                 })

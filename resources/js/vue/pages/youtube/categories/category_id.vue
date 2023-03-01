@@ -26,13 +26,13 @@ export default {
     },
     methods: {
         getSubcategories() {
-            axios.get('/api/youtube/categories/' + this.$route.params.category_id)
+            axios.get('/api/categories/' + this.$route.params.category_id)
                 .then(res => {
                     this.category = res.data;
                 });
         },
         addSubcategory() {
-            axios.post('/api/youtube/categories/' + this.category.id + '/addSubcategory', {
+            axios.post('/api/categories/' + this.category.id + '/addSubcategory', {
                 parentId: this.category.id,
                 title: this.newSubcategoryTitle
             }).then(res => {

@@ -32,7 +32,7 @@ export default {
         uploadFile() {
             const formData = new FormData();
             formData.append('html', this.$refs["upload-input"].files[0]);
-            axios.post('/api/youtube/watch-later/parse-html', formData)
+            axios.post('/api/watch-later/parse-html', formData)
                 .then(res => {
                     this.items = res.data.items;
                 });

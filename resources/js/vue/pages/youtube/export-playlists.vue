@@ -9,7 +9,7 @@ export default {
     methods: {
         handler() {
             this.loading = true
-            axios.post('/api/youtube/export-playlists')
+            axios.post('/api/export-playlists')
                 .then(res => {
                         this.items = res.data.items;
                         this.loading = false;
@@ -23,7 +23,7 @@ export default {
         },
     },
     mounted() {
-        axios.get('/api/youtube/playlists').then(res => {
+        axios.get('/api/playlists').then(res => {
             this.items = res.data.items;
         });
     }

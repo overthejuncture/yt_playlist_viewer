@@ -19,28 +19,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('/youtube')->group(function () {
-        Route::prefix('/videos')->group(function () {
-            Route::get('/get', [VideosController::class, 'get']);
-            Route::post('/set-category', [VideosController::class, 'setCategory']);
-        });
-        Route::prefix('/watch-later')->group(function () {
-            Route::get('/get', [WatchLaterController::class, 'get']);
-            Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);
-        });
-        Route::prefix('/categories')->group(function () {
-            Route::get('', [CategoriesController::class, 'index']);
-            Route::post('', [CategoriesController::class, 'store']);
-            Route::delete('{category}',[CategoriesController::class, 'delete']);
-            Route::post('/{category}/addSubcategory', [CategoriesController::class, 'addSubcategory']);
-            Route::get('/{id}',[CategoriesController::class, 'show']);
-        });
-        Route::prefix('/categorize')->group(function () {
-            Route::get('/get',[CategorizeController::class, 'get']);
-            Route::get('{video}',[CategorizeController::class, 'getById']);
-        });
-        Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
-        Route::get('/playlists', [YoutubeController::class, 'playlists']);
+    Route::prefix('/videos')->group(function () {
+        Route::get('/get', [VideosController::class, 'get']);
+        Route::post('/set-category', [VideosController::class, 'setCategory']);
     });
+    Route::prefix('/watch-later')->group(function () {
+        Route::get('/get', [WatchLaterController::class, 'get']);
+        Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);
+    });
+    Route::prefix('/categories')->group(function () {
+        Route::get('', [CategoriesController::class, 'index']);
+        Route::post('', [CategoriesController::class, 'store']);
+        Route::delete('{category}', [CategoriesController::class, 'delete']);
+        Route::post('/{category}/addSubcategory', [CategoriesController::class, 'addSubcategory']);
+        Route::get('/{id}', [CategoriesController::class, 'show']);
+    });
+    Route::prefix('/categorize')->group(function () {
+        Route::get('/get', [CategorizeController::class, 'get']);
+        Route::get('{video}', [CategorizeController::class, 'getById']);
+    });
+    Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
+    Route::get('/playlists', [YoutubeController::class, 'playlists']);
 });
 

@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         get() {
-            axios.get('/api/youtube/categorize/get').then((res) => {
+            axios.get('/api/categorize/get').then((res) => {
                 this.video = res.data;
             });
         },

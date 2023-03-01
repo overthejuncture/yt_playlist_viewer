@@ -24,7 +24,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('/api/youtube/categorize/' + this.$route.params.video_id).then((res) => {
+        axios.get('/api/categorize/' + this.$route.params.video_id).then((res) => {
             this.video = res.data;
         });
     },
