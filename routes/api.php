@@ -24,7 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/set-category', [VideosController::class, 'setCategory']);
     });
     Route::prefix('/watch-later')->group(function () {
-        Route::get('/get', [WatchLaterController::class, 'get']);
         Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);
     });
     Route::prefix('/categories')->group(function () {

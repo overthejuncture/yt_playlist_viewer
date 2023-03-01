@@ -1,47 +1,24 @@
 <template>
-    <div>
-        <CategorizeView v-if="video" :video="video">
-            <template v-slot:above>
-                <CreateCategory/>
-                <ListCategories :categories="this.$store.state.categories.items"
-                                v-on:picked="saveCategoryForItems"/>
-            </template>
-            <template v-slot:below>
-                <div class="btn btn-success" @click="get">Next</div>
-            </template>
-        </CategorizeView>
-    </div>
+    <List/>
 </template>
 
 <script>
-import CategorizeView from "@/components/youtube/categorize/CategorizeView.vue";
-import ListCategories from "@/components/youtube/categories/List.vue";
-import CreateCategory from "@/components/youtube/categories/Create.vue";
+import List from "@/components/youtube/watch-later/List.vue";
 
 export default {
-    name: "categorize",
-    components: {CategorizeView, ListCategories, CreateCategory},
     data() {
         return {
-            video: null
+            file: null,
+            selectionMode: false,
+            categories: null,
+            newCategoryTitle: null
         }
     },
     mounted() {
-        this.get();
+        this.$store.dispatch('videos/getItems', {withoutCategories: true});
+        this.$store.dispatch('categories/load');
     },
-    methods: {
-        get() {
-            axios.get('/api/categorize/get').then((res) => {
-                this.video = res.data;
-            });
-        },
-        saveCategoryForItems(categoryId) {
-            this.$store.dispatch('categories/addToVideo', {
-                videoId: this.video.id,
-                categoryId: categoryId
-            })
-        },
-    }
+    components: {List}
 }
 </script>
 

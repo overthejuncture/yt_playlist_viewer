@@ -16,8 +16,6 @@ class WatchLaterController extends Controller
     {
         $categories = $request->get('categories');
         if ($categories) {
-
-//            return response()->json();
             $videos = Video::whereHas('categories', function ($builder) use ($categories) {
                 $builder->whereIn('category_id', $categories);
             })->watchLater()->get();
@@ -26,6 +24,7 @@ class WatchLaterController extends Controller
 
         return response()->json(Video::whereDoesntHave('categories')->watchLater()->get());
     }
+
     public function parseFromHtml(Request $request)
     {
         /** @var UploadedFile $file */

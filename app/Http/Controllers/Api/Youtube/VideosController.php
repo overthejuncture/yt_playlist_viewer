@@ -11,11 +11,18 @@ class VideosController extends Controller
     public function get(Request $request)
     {
         $cats = $request->get('categories', []);
-        $videos = Video::whereHas(
-            'categories', function ($builder) use ($cats) {
-            $builder->whereIn('categories.id', $cats);
-        })
-            ->get();
+        $withoutCategories = $request->boolean('withoutCategories');
+        if ($withoutCategories) {
+            $videos = Video::whereDoesntHave('categories')->get();
+        } else if ($cats) {
+            $videos = Video::whereHas(
+                'categories', function ($builder) use ($cats) {
+                $builder->whereIn('categories.id', $cats);
+            })
+                ->get();
+        } else {
+            $videos = Video::all();
+        }
         return response()->json($videos);
     }
 

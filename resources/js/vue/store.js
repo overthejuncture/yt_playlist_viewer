@@ -1,12 +1,12 @@
 import categories from '@/stores/categories.js';
 import categorize from '@/stores/categorize.js';
-import watchLater from '@/stores/watch-later.js';
+import videos from '@/stores/videos.js';
 
 
 const store = {
     categories,
     categorize,
-    watchLater,
+    videos,
 };
 
 export default store;
