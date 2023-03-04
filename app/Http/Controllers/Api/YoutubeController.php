@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Dto\Youtube\Playlists\Playlist;
+use App\Dto\Playlists\Playlist;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Video;
 use Google\Service\YouTube;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class YoutubeController extends Controller
 {

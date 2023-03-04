@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Youtube;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Video;
 use Illuminate\Http\Request;

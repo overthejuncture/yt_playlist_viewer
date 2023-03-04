@@ -6,7 +6,7 @@ use App\Models\YoutubePlaylist;
 
 class Playlist
 {
-    public static function create(\App\Dto\Youtube\Playlists\Playlist $data)
+    public static function create(\App\Dto\Playlists\Playlist $data)
     {
         return YoutubePlaylist::create((array) $data);
     }

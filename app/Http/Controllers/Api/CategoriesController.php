@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Youtube;
+namespace App\Http\Controllers\Api;
 
 use App\Factories\Youtube\Categories\CategoryFactory;
 use App\Http\Controllers\Controller;
@@ -39,7 +39,7 @@ class CategoriesController extends Controller
     {
         $category->appendNode(
             CategoryFactory::create(
-                new \App\Dto\Youtube\Categories\Category(
+                new \App\Dto\Categories\Category(
                     title: $request->post('title'),
                     user_id: auth()->user()->id
                 )

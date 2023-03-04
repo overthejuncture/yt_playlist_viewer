@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto\Youtube\Categories;
+namespace App\Dto\Categories;
 
 class Category
 {

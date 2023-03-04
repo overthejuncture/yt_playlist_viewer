@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\Youtube\CategoriesController;
-use App\Http\Controllers\Api\Youtube\CategorizeController;
-use App\Http\Controllers\Api\Youtube\VideosController;
-use App\Http\Controllers\Api\Youtube\WatchLaterController;
+use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\CategorizeController;
+use App\Http\Controllers\Api\VideosController;
+use App\Http\Controllers\Api\WatchLaterController;
 use App\Http\Controllers\Api\YoutubeController;
 use Illuminate\Support\Facades\Route;
 

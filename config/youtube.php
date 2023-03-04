@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'redirect_uri' =>'/youtube/checkKey',
+    'redirect_uri' =>'/checkKey',
     'url' => 'https://www.youtube.com/',
     'watch_url' => '/watch?v=',
 ];

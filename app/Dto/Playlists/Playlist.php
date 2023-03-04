@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto\Youtube\Playlists;
+namespace App\Dto\Playlists;
 
 class Playlist
 {

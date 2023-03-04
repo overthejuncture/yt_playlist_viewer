@@ -2,7 +2,7 @@
 
 namespace App\Factories\Youtube\Categories;
 
-use App\Dto\Youtube\Categories\Category;
+use App\Dto\Categories\Category;
 
 class CategoryFactory
 {
