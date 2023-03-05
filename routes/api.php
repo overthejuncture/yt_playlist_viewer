@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/videos')->group(function () {
         Route::get('/get', [VideosController::class, 'get']);
-        Route::post('/set-category', [VideosController::class, 'setCategory']);
+        Route::post('/{video}/categories', [VideosController::class, 'setCategory']);
     });
     Route::prefix('/watch-later')->group(function () {
         Route::post('/parse-html', [WatchLaterController::class, 'parseFromHtml']);

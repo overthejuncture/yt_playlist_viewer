@@ -18,13 +18,9 @@
 
 export default {
     name: "List",
-    data() {
-        return {
-            picked: []
-        }
-    },
     props: {
-        categories: Array
+        categories: Array,
+        picked: Array
     },
     methods: {
         clicked(category) {

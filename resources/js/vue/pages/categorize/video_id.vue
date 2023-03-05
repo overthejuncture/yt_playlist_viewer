@@ -1,11 +1,13 @@
 <template>
     <div class="flex gap-5">
-        <CategorizeView v-if="video" :video="video">
-        </CategorizeView>
+        <CategorizeView v-if="video" :video="video"/>
         <div>
             <CreateCategory/>
             <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
-                            v-on:picked="saveCategoryForItems"/>
+                            v-on:allPicked="saveCategoryForItems"
+                            v-if="this.video"
+                            :picked="this.calcCategories(this.video)"
+            />
         </div>
     </div>
 </template>
@@ -24,16 +26,23 @@ export default {
         }
     },
     mounted() {
-        axios.get('/api/categorize/' + this.$route.params.video_id).then((res) => {
-            this.video = res.data;
-        });
+        this.loadVideo();
     },
     methods: {
-        saveCategoryForItems(categoryId) {
+        saveCategoryForItems(categories) {
             this.$store.dispatch('categories/addToVideo', {
                 videoId: this.video.id,
-                categoryId: categoryId
-            })
+                categories: categories
+            });
+            this.loadVideo();
+        },
+        loadVideo() {
+            axios.get('/api/categorize/' + this.$route.params.video_id).then((res) => {
+                this.video = res.data;
+            });
+        },
+        calcCategories(video) {
+            return video.categories.map(category => category.id);
         },
     }
 }

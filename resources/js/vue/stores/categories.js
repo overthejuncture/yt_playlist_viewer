@@ -21,9 +21,8 @@ export default {
         },
         // TODO this shouldn't be there
         addToVideo({commit}, data) {
-            axios.post('/api/videos/set-category', {
-                videoId: data.videoId,
-                categoryId: data.categoryId
+            axios.post(`/api/videos/${data.videoId}/categories`, {
+                categories: data.categories
             });
         },
         delete({dispatch}, data) {

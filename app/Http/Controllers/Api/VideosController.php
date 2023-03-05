@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Video;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class VideosController extends Controller
@@ -26,13 +27,10 @@ class VideosController extends Controller
         return response()->json($videos);
     }
 
-    public function setCategory(Request $request)
+    public function setCategory(Request $request, Video $video): JsonResponse
     {
-        $video_id = $request->post('videoId');
-        $category_id = $request->post('categoryId');
-        $video = Video::where('id', $video_id)->first();
-        /* @var $video Video */
-        $video->categories()->syncWithoutDetaching($category_id);
-        return response()->json();
+        $categories = $request->post('categories');
+        $video->categories()->sync($categories);
+        return response()->json($video);
     }
 }

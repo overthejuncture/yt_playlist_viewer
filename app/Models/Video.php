@@ -16,6 +16,7 @@ class Video extends Model
     {
         static::addGlobalScope(function (Builder $builder) {
             $builder->where('user_id', auth()->user()->id);
+            $builder->with('categories');
         });
     }
 
