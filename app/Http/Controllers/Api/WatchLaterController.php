@@ -16,13 +16,13 @@ class WatchLaterController extends Controller
     {
         $categories = $request->get('categories');
         if ($categories) {
-            $videos = Video::whereHas('categories', function ($builder) use ($categories) {
+            $videos = Video::watchLater()->whereHas('categories', function ($builder) use ($categories) {
                 $builder->whereIn('category_id', $categories);
-            })->watchLater()->get();
+            })->get();
             return response()->json($videos);
         }
 
-        return response()->json(Video::whereDoesntHave('categories')->watchLater()->get());
+        return response()->json(Video::watchLater()->whereDoesntHave('categories')->get());
     }
 
     public function parseFromHtml(Request $request)

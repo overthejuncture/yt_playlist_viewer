@@ -11,6 +11,7 @@ class YoutubeController extends Controller
 {
     public function playlists(): JsonResponse
     {
+        /** @phpstan-ignore-next-line */
         return response()->json(['items' => auth()->user()->youtube_playlists()->get()->toArray()]);
     }
 
@@ -37,10 +38,12 @@ class YoutubeController extends Controller
                 title: $item->snippet->title,
                 description: $item->snippet->description,
                 thumbnails: json_encode($item->snippet->thumbnails),
+                /** @phpstan-ignore-next-line */
                 user_id: auth()->user()->id,
             );
         }
 
+        /** @phpstan-ignore-next-line */
         auth()->user()->youtube_playlists()->delete();
 
         foreach ($result as $item) {

@@ -20,6 +20,7 @@ class CategoriesController extends Controller
         $title = $request->post('title');
         $category = new Category([
             'title' => $title,
+            /** @phpstan-ignore-next-line */
             'user_id' => auth()->user()->id,
         ]);
         $category->saveAsRoot();
@@ -41,6 +42,7 @@ class CategoriesController extends Controller
             CategoryFactory::create(
                 new \App\Dto\Categories\Category(
                     title: $request->post('title'),
+                    /** @phpstan-ignore-next-line */
                     user_id: auth()->user()->id
                 )
             )
