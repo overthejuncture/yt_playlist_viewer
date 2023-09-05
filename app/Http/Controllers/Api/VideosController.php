@@ -31,6 +31,7 @@ class VideosController extends Controller
     {
         $categories = $request->post('categories');
         $video->categories()->sync($categories);
+        $video = $video->fresh(['categories']);
         return response()->json($video);
     }
 }
