@@ -23,10 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'google.token'])->group(function () {
-    Route::withoutMiddleware('google.token')->group(function () {
-        Route::get('/createAuthUrl', [YoutubeController::class, 'createAuthUrl']);
-        Route::get('/checkKey', [YoutubeController::class, 'checkKey']);
-    });
-    Route::view('{slug?}', 'vue')->name('youtube')->where('slug', '.*');
-});
+//Route::get('/createAuthUrl', [YoutubeController::class, 'createAuthUrl']);
+//Route::get('/checkKey', [YoutubeController::class, 'checkKey']);
+
+Route::view('{slug?}', 'vue')->name('youtube')->where('slug', '.*');
