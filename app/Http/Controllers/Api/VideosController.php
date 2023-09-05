@@ -34,4 +34,9 @@ class VideosController extends Controller
         $video = $video->fresh(['categories']);
         return response()->json($video);
     }
+
+    public function getById(Request $request, Video $video)
+    {
+        return response()->json($video);
+    }
 }

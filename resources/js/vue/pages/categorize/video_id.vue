@@ -4,9 +4,9 @@
         <div>
             <CreateCategory/>
             <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
-                            v-on:allPicked="saveCategoryForItems"
+                            @allPicked="saveCategoryForItems"
                             v-if="this.video"
-                            :picked="this.calcCategories(this.video)"
+                            :picked="this.picked"
             />
         </div>
     </div>
@@ -22,27 +22,32 @@ export default {
     components: {CategorizeView, ListCategories, CreateCategory},
     data() {
         return {
+            video_id: null,
+            picked: [],
             video: null
         }
     },
-    mounted() {
-        this.loadVideo();
+    async mounted() {
+        this.video_id = this.$route.params.video_id;
+        await this.loadVideo();
+        this.picked = this.calcCategories();
     },
     methods: {
         saveCategoryForItems(categories) {
             this.$store.dispatch('categories/addToVideo', {
                 videoId: this.video.id,
                 categories: categories
+            }).then(res => {
+                this.loadVideo();
             });
-            this.loadVideo();
         },
-        loadVideo() {
-            axios.get('/api/categorize/' + this.$route.params.video_id).then((res) => {
+        async loadVideo() {
+            return axios.get('/api/videos/' + this.video_id).then((res) => {
                 this.video = res.data;
             });
         },
-        calcCategories(video) {
-            return video.categories.map(category => category.id);
+        calcCategories() {
+            return this.video.categories.map(category => category.id);
         },
     }
 }

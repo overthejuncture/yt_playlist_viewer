@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriesController;
-use App\Http\Controllers\Api\CategorizeController;
 use App\Http\Controllers\Api\VideosController;
 use App\Http\Controllers\Api\WatchLaterController;
 use App\Http\Controllers\Api\YoutubeController;
@@ -21,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/videos')->group(function () {
         Route::get('/get', [VideosController::class, 'get']);
+        Route::get('/{video}', [VideosController::class, 'getById']);
         Route::post('/{video}/categories', [VideosController::class, 'setCategory']);
     });
     Route::prefix('/watch-later')->group(function () {
@@ -32,10 +32,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('{category}', [CategoriesController::class, 'delete']);
         Route::post('/{category}/addSubcategory', [CategoriesController::class, 'addSubcategory']);
         Route::get('/{id}', [CategoriesController::class, 'show']);
-    });
-    Route::prefix('/categorize')->group(function () {
-        Route::get('/get', [CategorizeController::class, 'get']);
-        Route::get('{video}', [CategorizeController::class, 'getById']);
     });
     Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
     Route::get('/playlists', [YoutubeController::class, 'playlists']);
