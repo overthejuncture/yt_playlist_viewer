@@ -1,7 +1,7 @@
 <template>
-    <div class="mb-5">
+    <div class="mb-5 w-full">
         <div class="mb-1">Categories:</div>
-        <div class="flex gap-4">
+        <div class="flex flex-wrap gap-4">
             <button
                 :class="{'bg-highlight': pickedCat(category.id)}"
                 v-for="category in this.categories"

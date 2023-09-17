@@ -1,14 +1,19 @@
 <template>
-    <div class="cat-container">
-        {{ title }}
-        <div class="cat-buttons">
-            <router-link
-                style="text-decoration: none; color: inherit;"
-                :to="'/categories/' + id" class="cat-button"
-            >
-                <div @click="edit">Edit</div>
-            </router-link>
-            <div @click="this.$store.dispatch('categories/delete', id)" class="cat-button">Delete</div>
+    <div class="text-gray-600 hover:text-gray-900 cat-container flex bg-slate-100 items-center rounded-md h-12 overflow-hidden font-semibold w-fit">
+        <div class="px-3 cursor-default">
+            {{ title }}
+        </div>
+        <router-link
+            style="text-decoration: none; color: inherit;"
+            :to="'/categories/' + id"
+            class="h-full align-items-center flex items-center transition-colors duration-300 px-3 bg-blue-300 hover:bg-blue-500"
+        >
+            Edit
+        </router-link>
+        <div @click="this.$store.dispatch('categories/delete', id)"
+             class="cat-button bg-red-300 hover:bg-red-500 transition-colors duration-300 h-full flex items-center px-3 cursor-pointer"
+        >
+            Delete
         </div>
     </div>
 </template>
@@ -25,38 +30,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cat-container {
-    width: fit-content;
-    background-color: lightblue;
-    display: inline-flex;
-    align-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    height: 3rem;
-    padding-left: 1rem;
-    border-radius: 7px;
-    overflow: hidden;
-}
-
-.cat-buttons {
-    margin-left: 1rem;
-    height: 100%;
-    display: flex;
-}
-
-.cat-button {
-    min-width: 3rem;
-    width: fit-content;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    display: flex;
-    background-color: pink;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-        background-color: red;
-    }
-}
 
 </style>
