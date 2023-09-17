@@ -17,7 +17,7 @@
 <script>
 
 export default {
-    name: "List",
+    name: "CategoriesList",
     props: {
         categories: Array,
         picked: Array

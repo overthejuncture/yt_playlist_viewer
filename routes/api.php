@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('{category}', [CategoriesController::class, 'delete']);
         Route::post('/{category}/addSubcategory', [CategoriesController::class, 'addSubcategory']);
         Route::get('/{id}', [CategoriesController::class, 'show']);
+        Route::post('/search', [CategoriesController::class, 'search']);
     });
     Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
     Route::get('/playlists', [YoutubeController::class, 'playlists']);

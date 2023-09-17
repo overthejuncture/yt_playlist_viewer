@@ -16,6 +16,9 @@ export default {
         },
     },
     actions: {
+        setItems({commit}, data) {
+            commit('setAll', data);
+        },
         getItems({commit}, filters) {
             axios.get('/api/videos/get', {params: filters}).then(res => {
                 commit('setAll', res.data);

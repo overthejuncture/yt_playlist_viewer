@@ -3,7 +3,7 @@
         <CategorizeView v-if="video" :video="video"/>
         <div>
             <CreateCategory/>
-            <ListCategories :categories="this.$store.state.categories.items" class="mb-2"
+            <CategoriesList :categories="this.$store.state.categories.items" class="mb-2"
                             @allPicked="saveCategoryForItems"
                             v-if="this.video"
                             :picked="this.picked"
@@ -14,12 +14,12 @@
 
 <script>
 import CategorizeView from "@/components/youtube/categorize/CategorizeView.vue";
-import ListCategories from "@/components/youtube/categories/List.vue";
+import CategoriesList from "@/components/youtube/categories/CategoriesList.vue";
 import CreateCategory from "@/components/youtube/categories/Create.vue";
 
 export default {
     name: "video_id",
-    components: {CategorizeView, ListCategories, CreateCategory},
+    components: {CategorizeView, CategoriesList, CreateCategory},
     data() {
         return {
             video_id: null,

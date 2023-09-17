@@ -8,7 +8,7 @@
 
 <script>
 import CreateCategory from "@/components/youtube/categories/Create.vue";
-import ListCategories from "@/components/youtube/categories/List.vue";
+import CategoriesList from "@/components/youtube/categories/CategoriesList.vue";
 import ListItem from "@/components/youtube/watch-later/ListItem.vue";
 
 export default {
@@ -28,7 +28,7 @@ export default {
                 });
         },
     },
-    components: {CreateCategory, ListCategories, ListItem}
+    components: {CreateCategory, CategoriesList, ListItem}
 }
 </script>
 
