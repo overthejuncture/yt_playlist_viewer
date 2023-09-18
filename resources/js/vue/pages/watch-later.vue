@@ -1,7 +1,10 @@
 <template>
     <div>
         <label class="block">
-            <input type="file" class="block w-full text-sm text-slate-500
+            <input type="file"
+               @change="uploadFile"
+               ref="upload-input"
+               class="block w-full text-sm text-slate-500
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0
                 file:text-sm file:font-semibold
@@ -23,6 +26,14 @@ import CategoriesList from "@/components/youtube/categories/CategoriesList.vue";
 
 export default {
     methods: {
+        uploadFile() {
+            const formData = new FormData();
+            formData.append('html', this.$refs["upload-input"].files[0]);
+            axios.post('/api/watch-later/parse-html', formData)
+                .then(res => {
+                    this.items = res.data.items;
+                });
+        },
         searchCategories(e) {
             // todo move to store? but it shouldn't be in global store
             this.pickedSearchCategories = e;

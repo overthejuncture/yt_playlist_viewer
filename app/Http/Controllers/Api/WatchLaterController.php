@@ -32,8 +32,8 @@ class WatchLaterController extends Controller
         $data = file_get_contents($file->getRealPath());
 //        file_put_contents(__DIR__ . '/check.txt', $data);
 //        dd();
-        $start = mb_strpos($data, '<ytd-playlist-video-list-renderer');
-        $data = mb_substr($data, $start, mb_strpos($data, '</ytd-playlist-video-list-renderer>') - $start);
+//        $start = mb_strpos($data, '<ytd-playlist-video-list-renderer');
+//        $data = mb_substr($data, $start, mb_strpos($data, '</ytd-playlist-video-list-renderer>') - $start);
 //        file_put_contents(__DIR__ . '/check.txt', $data);
 
         preg_match_all(

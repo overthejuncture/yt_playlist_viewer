@@ -19,14 +19,6 @@ export default {
         }
     },
     methods: {
-        uploadFile() {
-            const formData = new FormData();
-            formData.append('html', this.$refs["upload-input"].files[0]);
-            axios.post('/api/watch-later/parse-html', formData)
-                .then(res => {
-                    this.items = res.data.items;
-                });
-        },
     },
     components: {CreateCategory, CategoriesList, ListItem}
 }
