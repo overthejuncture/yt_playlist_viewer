@@ -15,6 +15,11 @@ export default {
             state.current = data;
         },
     },
+    getters: {
+        async getRandomVideoWithoutCategories() {
+            return axios.get('/api/videos/getRandomVideoWithoutCategories');
+        },
+    },
     actions: {
         setItems({commit}, data) {
             commit('setAll', data);

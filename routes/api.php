@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/videos')->group(function () {
         Route::get('/get', [VideosController::class, 'get']);
+        Route::get('/getRandomVideoWithoutCategories', [VideosController::class, 'getRandomVideoWithoutCategories']);
         Route::get('/{video}', [VideosController::class, 'getById']);
         Route::post('/{video}/categories', [VideosController::class, 'setCategory']);
     });

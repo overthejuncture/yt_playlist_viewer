@@ -27,6 +27,12 @@ class VideosController extends Controller
         return response()->json($videos);
     }
 
+    public function getRandomVideoWithoutCategories()
+    {
+        $video = Video::whereDoesntHave('categories')->inRandomOrder()->first();
+        return response()->json($video);
+    }
+
     public function setCategory(Request $request, Video $video): JsonResponse
     {
         $categories = $request->post('categories');

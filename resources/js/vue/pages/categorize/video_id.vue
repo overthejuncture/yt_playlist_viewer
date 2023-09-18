@@ -1,6 +1,7 @@
 <template>
     <div class="flex gap-5">
-        <CategorizeView v-if="video" :video="video"/>
+        <!--       // @todo this is just a card, like the one used in the grid of all videos -->
+        <CategorizeView style="min-width: 30%;" v-if="video" :video="video"/>
         <div>
             <CreateCategory/>
             <CategoriesList :categories="this.$store.state.categories.items" class="mb-2"
@@ -8,6 +9,11 @@
                             v-if="this.video"
                             :picked="this.picked"
             />
+            <div class="btn btn-primary bg-secondary w-fit p-4 rounded-md cursor-pointer"
+                 @click="loadNextVideo"
+            >
+                NEXT
+            </div>
         </div>
     </div>
 </template>
@@ -33,6 +39,14 @@ export default {
         this.picked = this.calcCategories();
     },
     methods: {
+        loadNextVideo() {
+            let request = this.$store.getters['videos/getRandomVideoWithoutCategories'];
+            request.then(res => {
+                this.video = res.data;
+                this.video_id = this.video.id;
+                this.picked = this.calcCategories();
+            });
+        },
         saveCategoryForItems(categories) {
             this.$store.dispatch('categories/addToVideo', {
                 videoId: this.video.id,
