@@ -1,7 +1,9 @@
 <template>
-    <Create/>
-    <div class="flex flex-row flex-wrap gap-3">
-        <Options v-for="category in this.$store.state.categories.items" :id="category.id" :title="category.title"/>
+    <div class="container mx-auto">
+        <Create/>
+        <div class="flex flex-row flex-wrap gap-3">
+            <Options v-for="category in this.$store.state.categories.items" :id="category.id" :title="category.title"/>
+        </div>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <List/>
+    <List class="container mx-auto"/>
 </template>
 
 <script>

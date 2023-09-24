@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto">
         <label class="block">
             <input type="file"
                @change="uploadFile"
