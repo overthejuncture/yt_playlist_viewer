@@ -1,4 +1,4 @@
-.PHONY: app
+.PHONY: app ngrok
 up:
 	docker-compose up -d
 app:

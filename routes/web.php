@@ -3,6 +3,7 @@
 use App\Http\Controllers\YoutubeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('ext')->group(base_path('routes/ext.php'));
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,7 +26,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 //Route::get('/createAuthUrl', [YoutubeController::class, 'createAuthUrl']);
 //Route::get('/checkKey', [YoutubeController::class, 'checkKey']);
 
-Route::view('{slug?}', 'vue')->name('youtube')->where('slug', '.*');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/tokens/create', function (Request $request) {
+        $token = $request->user()->createToken('extension');
+
+        return ['token' => $token->plainTextToken];
+    });
+
+    Route::view('{slug?}', 'vue')->name('youtube')->where('slug', '.*');
+});
+
+

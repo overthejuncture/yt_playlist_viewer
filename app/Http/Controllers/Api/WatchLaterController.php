@@ -43,6 +43,7 @@ class WatchLaterController extends Controller
             '<ytd-channel-name.*?>.*?<a.*?href="(.*?)".*?>(.*?)<\/a>.*?<\/ytd-channel-name>.*?' .
             '<\/ytd-playlist-video-renderer>/s',
             $data, $matches, PREG_SET_ORDER);
+
         /** @var User $user */
         $user = auth()->user();
         $all = [];

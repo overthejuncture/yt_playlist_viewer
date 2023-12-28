@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\Extension\VideosController as ExtensionVideosController;
 use App\Http\Controllers\Api\VideosController;
 use App\Http\Controllers\Api\WatchLaterController;
 use App\Http\Controllers\Api\YoutubeController;
@@ -37,5 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::post('/export-playlists', [YoutubeController::class, 'exportPlaylists']);
     Route::get('/playlists', [YoutubeController::class, 'playlists']);
+    Route::prefix('/extension')->group(function () {
+        Route::post('/videos/upload', [ExtensionVideosController::class, 'upload']);
+    });
 });
 
