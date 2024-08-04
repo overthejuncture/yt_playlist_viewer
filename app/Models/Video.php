@@ -37,6 +37,8 @@ class Video extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['title', 'real_id', 'author_id', 'author_title', 'user_id', 'is_watch_later'];
 
     protected static function booted()

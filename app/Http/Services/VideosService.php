@@ -33,7 +33,7 @@ class VideosService
                 'is_watch_later' => true
             ];
         }
-        Video::where('user_id', $user->id)->delete();
-        Video::insert($all);
+        // Video::where('user_id', $user->id)->delete();
+        Video::upsert($all, ['real_id', 'user_id'], ['thumbnail']);
     }
 }

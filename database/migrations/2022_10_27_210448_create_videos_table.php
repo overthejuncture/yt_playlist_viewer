@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('user_id');
             $table->text('thumbnail')->nullable();
             $table->boolean('is_watch_later')->nullable();
+
+            $table->unique(['real_id', 'user_id']);
         });
     }
 
